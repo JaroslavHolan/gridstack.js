@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 3</title>
+
+    <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <link href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" rel="stylesheet" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
+
+    <style>
+        .flexbox-grow-0 .item {
+            flex-grow: 0;
+        }
+
+        .flexbox-grow-1 .item {
+            flex-grow: 1;
+        }
+
+        .flexbox {
+            display: flex;
+            border: 2px solid #86835f;
+            margin-bottom: 2em;
+        }
+
+        .item {
+            box-sizing: border-box;
+            padding: 2em;
+            background: #86835f;
+            color: #ece69c;
+            margin: 0.25em;
+        }
+
+        .item-A {
+            padding-bottom: 4em;
+        }
+
+        .item-B {
+            padding-top: 3em;
+            padding-bottom: 8em;
+        }
+
+        .item-C {
+            padding-bottom: 6em;
+        }
+
+        .item h2 {
+            font-size: 3em;
+            text-align: center;
+            margin: 0;
+            bottom: 0;
+            color: #ece69c;
+        }
+
+        h1 {
+            margin-bottom: 3em;
+        }
+
+        .grid-stack {
+            background: #faf6f8;
+        }
+
+        .grid-stack-item-content {
+            color: #2c3e50;
+            text-align: center;
+            background-color: #b4b5bc;
+        }
+
+        .grid-stack .grid-stack {
+            /*margin: 0 -10px;*/
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .grid-stack .grid-stack .grid-stack-item-content {
+            background: lightpink;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>
+    Flexbox <code>flex-grow</code> – The Ability To Grow
+</h1>
+
+<h2 id="stretch">
+    flex-grow: 0
+</h2>
+
+<div class="flexbox flexbox-grow-0">
+    <div class="item item-A">
+        <h2>A)</h2>
+    </div>
+    <div class="item item-B">
+        <h2>B)</h2>
+    </div>
+    <div class="item item-C">
+        <h2>C)</h2>
+    </div>
+</div>
+
+
+<div class="flexbox flexbox-grow-1">
+    <div class="item item-A">
+        <h2>A)</h2>
+        <div class="ct-chart"></div>
+        <script>
+            new Chartist.Bar('.ct-chart', {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Nedele'],
+                series: [
+                    [2, 8, 2, 4, 5, 8, 10],
+                    [4, 5, 8, 2, 6, 3, 10]
+                ]
+            }, {
+                seriesBarDistance: 6,
+                axisX: {
+                    showGrid: false,
+                    labelInterpolationFnc: function (value) {
+                        return value[0];
+                    }
+                }
+            }, [
+                ['screen and (min-width: 300px)', {
+                    seriesBarDistance: 15,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return value.slice(0, 3);
+                        }
+                    }
+                }],
+                ['screen and (min-width: 600px)', {
+                    seriesBarDistance: 30,
+                    axisX: {
+                        labelInterpolationFnc: Chartist.noop
+                    }
+                }]
+            ]);
+        </script>
+    </div>
+    <div class="item item-B">
+        <h2>B)</h2>
+    </div>
+    <div class="item item-C">
+        <h2>Cccc)</h2>
+        <div class="ct-chartC"></div>
+        <script>
+            new Chartist.Bar('.ct-chartC', {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Nedele'],
+                series: [
+                    [2, 8, 2, 4, 5, 8, 10],
+                    [4, 5, 8, 2, 6, 3, 10]
+                ]
+            }, {
+                seriesBarDistance: 6,
+                axisX: {
+                    showGrid: false,
+                    labelInterpolationFnc: function (value) {
+                        return value[0];
+                    }
+                }
+            }, [
+                ['screen and (min-width: 300px)', {
+                    seriesBarDistance: 15,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return value.slice(0, 3);
+                        }
+                    }
+                }],
+                ['screen and (min-width: 600px)', {
+                    seriesBarDistance: 30,
+                    axisX: {
+                        labelInterpolationFnc: Chartist.noop
+                    }
+                }]
+            ]);
+        </script>
+    </div>
+</div>
+
+
+</body>
+</html>
