@@ -1,63 +1,92 @@
-new Chartist.Bar('.ct-chart1', {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Nedele'],
+var data;
+var options;
+var responsiveOptions;
+
+data = {
+    labels: ['To Do', 'Open', 'Closed'],
     series: [
-        [2, 8, 2, 4, 5, 8, 10],
-        [4, 5, 8, 2, 6, 3, 10]
+        [2, 8, 2],
+        [4, 5, 8]
+    ]
+};
+
+
+options = {
+    seriesBarDistance: 50,
+    height: '400px',
+    axisX: {
+        showGrid: false
+    },
+    axisY: {
+        onlyInteger: true
+    }
+};
+
+new Chartist.Bar('.chart-jira', data, options).on('draw', function (data) {
+    if (data.type === 'bar') {
+        data.element.attr({
+            style: 'stroke-width: 50px'
+        });
+    }
+});
+
+
+
+
+// Chart Teamcity builds
+data = {
+    series: [5, 28]
+};
+options = {
+    donut: true,
+    donutWidth: 60,
+    startAngle: 270,
+    total: 66,
+    showLabel: true
+};
+
+new Chartist.Pie('.chart-teamcity', data, options)
+
+// Line chart
+new Chartist.Line('.ct-chart2', {
+    labels: ['Po', 'Út', 'St', 'Čt', 'Pá', 'Po', 'Út', 'St', 'Čt', 'Pá'],
+    series: [
+        [2, 3, 2, 4, 5, 2, 3]
     ]
 }, {
-    seriesBarDistance: 6,
+    height: '300px',
+    showArea: true,
     axisX: {
-        showGrid: false,
-        labelInterpolationFnc: function (value) {
-            return value[0];
-        }
+        showGrid: true
+    },
+    axisY: {
+        onlyInteger: true
     }
-}, [
-    ['screen and (min-width: 300px)', {
-        seriesBarDistance: 15,
-        axisX: {
-            labelInterpolationFnc: function (value) {
-                return value.slice(0, 3);
-            }
-        }
-    }],
-    ['screen and (min-width: 600px)', {
-        seriesBarDistance: 30,
-        axisX: {
-            labelInterpolationFnc: Chartist.noop
-        }
-    }]
-]);
+});
 
 
+// Pie chart
+data = {
+    labels: ['common:10', 'intrabanking:9', 'monkbox:7', 'netbanking:10', 'slq:5'],
+    series: [10, 9, 7, 10, 5]
+};
 
-new Chartist.Bar('.ct-chart2', {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Nedele'],
-    series: [
-        [2, 8, 2, 4, 5, 8, 10],
-        [4, 5, 8, 2, 6, 3, 10]
-    ]
-}, {
-    seriesBarDistance: 6,
-    axisX: {
-        showGrid: false,
-        labelInterpolationFnc: function(value) {
-            return value[0];
-        }
-    }
-}, [
-    ['screen and (min-width: 300px)', {
-        seriesBarDistance: 15,
-        axisX: {
-            labelInterpolationFnc: function(value) {
-                return value.slice(0, 3);
-            }
-        }
-    }],
-    ['screen and (min-width: 600px)', {
-        seriesBarDistance: 30,
-        axisX: {
-            labelInterpolationFnc: Chartist.noop
-        }
-    }]
-]);
+options = {
+    labelInterpolationFnc: function (value) {
+        return value
+    },
+    // labelDirection: 'explode',
+    labelOffset: 10
+};
+
+new Chartist.Pie('.chart-pending', data, options);
+
+
+// demo pie
+// Simple pie chart example with four series
+data = {
+    series: [10, 2, 4]
+};
+new Chartist.Pie('.chart-jira-type', data);
+
+
