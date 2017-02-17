@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TV RED</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/gridstack.css"/>
+    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <script src="../dist/gridstack.js"></script>
+    <script src="../dist/gridstack.jQueryUI.js"></script>
+
+    <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <link href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" rel="stylesheet" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.0.2/screenfull.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+
+
+    <meta charset="utf-8">
+
+    <style type="text/css">
+
+        .grid-stack {
+            background: #ffffff;
+        }
+
+        .grid-stack-item-content {
+            color: #2c3e50;
+            text-align: center;
+            /* POZADI */
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .grid-stack .grid-stack {
+            /*margin: 0 -10px;*/
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .grid-stack .grid-stack .grid-stack-item-content {
+            background: #ffffff;
+        }
+
+        .myStyle {
+            width: 100%;
+            height: 80%;
+        }
+
+        .ct-label {
+            font-size: large;
+            color: #ffffff;
+            fill: #ffffff;
+        }
+
+        .myStyle .ct-label {
+            color: black;
+            font-size: x-large;
+        }
+/* A */
+        .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+            stroke: #db4101
+        }
+
+        .ct-series-a .ct-area, .ct-series-a .ct-slice-pie {
+            fill: #db4101
+        }
+/* B */
+        .ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+            stroke: #f8ae09
+        }
+
+        .ct-series-b .ct-area, .ct-series-b .ct-slice-pie {
+            fill: #f8ae09
+        }
+/* C */
+        .ct-series-c .ct-bar, .ct-series-c .ct-line, .ct-series-c .ct-point, .ct-series-c .ct-slice-donut {
+            stroke: #51d1ce
+        }
+
+        .ct-series-c .ct-area, .ct-series-c .ct-slice-pie {
+            fill: #51d1ce
+        }
+/* D */
+        .ct-series-d .ct-bar, .ct-series-d .ct-line, .ct-series-d .ct-point, .ct-series-d .ct-slice-donut {
+            stroke: #c24a7d
+        }
+
+        .ct-series-d .ct-area, .ct-series-d .ct-slice-pie {
+            fill: #c24a7d
+        }
+/* E */
+        .ct-series-e .ct-bar, .ct-series-e .ct-line, .ct-series-e .ct-point, .ct-series-e .ct-slice-donut {
+            stroke: #f8730a
+        }
+
+        .ct-series-e .ct-area, .ct-series-e .ct-slice-pie {
+            fill: #f8730a
+        }
+
+        .myStyle-moveUp {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: -170px;
+        }
+
+        .myStyle-moveLeft {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        h3 {
+            background-color: #283a54;
+            color: white;
+            padding: 5px;
+        }
+
+        h4 {
+            font-size: x-large;
+        }
+
+
+    </style>
+</head>
+<body>
+<script src="bower_components/chartist/dist/chartist.min.js"></script>
+
+<div class="container-fluid">
+
+    <div class="grid-stack">
+        <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <h2>Zavřené tasky ve Sprintu 26</h2>
+                <div class="ct-chart2"></div>
+            </div>
+        </div>
+        <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <h2>Last news</h2>
+                <div class="myStyle-moveLeft">
+                    <h3>WebAPI na produkci</h3>
+                </div>
+                <!--<h4>Blues 16.4.7</h4>-->
+                <!--<h4>Kapelnik 16.4.30 </h4>-->
+                <!--<h4>Messy 16.4.63  </h4>-->
+                <!--<h4>S2J 16.4.62 </h4>-->
+                <!--<h4>WBL 16.4.74 </h4>-->
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <h4><b>Verze:</b> <span id="webapi.version">neznámo</span></h4>
+                            <h4><b>Datum:</b> <span id="webapi.date">neznámo</span></h4>
+                            <h4><b>Čas:</b> <span id="webapi.time">neznámo</span></h4>
+                        </td>
+                    </tr>
+                </table>
+                <!--<h5>27.1. 13:26</h5>-->
+
+                <div class="myStyle-moveLeft">
+                    <h3>Zpráva ze Slacku</h3>
+                </div>
+                <h4>WebAPI + WBL deployed na ST2</h4>
+                <h5>19.1. 12:16</h5>
+
+            </div>
+        </div>
+        <div class="grid-stack-item" data-gs-x="8" data-gs-y="0" data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <h2>TeamCity: pending changes</h2>
+                <div class="chart-pending myStyle"></div>
+            </div>
+        </div>
+        <div class="grid-stack-item" data-gs-x="0" data-gs-y="4" data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <h2>Project tracking: JIRA / ALM</h2>
+                <div class="chart-jira myStyles"></div>
+            </div>
+        </div>
+        <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <h2>JIRA: Bug, Task, Spike</h2>
+                <div class="chart-jira-type myStyle"></div>
+            </div>
+        </div>
+        <div class="grid-stack-item" data-gs-x="8" data-gs-y="4" data-gs-width="4" data-gs-height="6">
+            <div class="grid-stack-item-content">
+                <h2>Builds: failed / running</h2>
+                <div class="chart-teamcity myStyle"></div>
+                <div class="myStyle-moveUp">
+                    <h3>Composite</h3>
+                    <h3>SPZ</h3>
+                    <h3>CRM</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<button toggleFullscreen>Toggle fullscreen</button>-->
+
+
+<!--<div class="ct-chart-out ct-chart">bbbbb</div>-->
+
+<script src="charts.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var options = {};
+        $('.grid-stack').gridstack(options);
+    });
+</script>
+</body>
+</html>
