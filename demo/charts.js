@@ -45,10 +45,10 @@ options = {
     showLabel: true
 };
 
-new Chartist.Pie('.chart-teamcity', data, options)
+new Chartist.Pie('.chart-teamcity', data, options);
 
 // Line chart
-new Chartist.Line('.ct-chart2', {
+var sprintChart = new Chartist.Line('.ct-chart2', {
     labels: ['Po', 'Út', 'St', 'Čt', 'Pá', 'Po', 'Út', 'St', 'Čt', 'Pá'],
     series: [
         [2, 3, 2, 4, 5, 2, 3]
@@ -87,6 +87,55 @@ new Chartist.Pie('.chart-pending', data, options);
 data = {
     series: [10, 2, 4]
 };
-new Chartist.Pie('.chart-jira-type', data);
+var jiraChart = new Chartist.Pie('.chart-jira-type', data);
+
+
+var webapi = getWebApiVersion();
+
+console.log(webapi.version);
+document.getElementById("webapi.version").innerHTML = webapi.version;
+
+document.getElementById("webapi.date").innerHTML = webapi.date.split(" ")[0];
+document.getElementById("webapi.time").innerHTML = webapi.date.split(" ")[1];
+
+setInterval(myCounter, 3000);
+
+function myCounter() {
+    var value1 = Math.floor((Math.random() * 100) + 1);
+    var value2 = Math.floor((Math.random() * 100) + 1);
+    var value3 = Math.floor((Math.random() * 100) + 1);
+
+    data = {
+        series: [value1, value2, value3]
+    };
+    jiraChart.update(data);
+
+    // switch of charts
+    //new Chartist.Pie('.ct-chart2', data);
+
+}
+
+
+function getWebApiVersion() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://www.csas.cz/webapi/api/v1/version", false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    return JSON.parse(xhttp.responseText);
+}
+
+
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyAVjS9iKb2IN2lNr1C0Gnip1VVcOvfWosc",
+    authDomain: "fir-9b338.firebaseapp.com",
+    databaseURL: "https://fir-9b338.firebaseio.com",
+    storageBucket: "fir-9b338.appspot.com",
+    messagingSenderId: "819813640707"
+};
+firebase.initializeApp(config);
+
+
 
 
